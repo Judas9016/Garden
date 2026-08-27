@@ -1,0 +1,1382 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Expedition 33 — Para Lonely</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    min-height:100vh;
+
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            #292929 0%,
+            #111111 45%,
+            #050505 100%
+        );
+
+    color:#e7e2d8;
+
+    font-family:"Inter",sans-serif;
+
+    overflow-x:hidden;
+}
+
+
+/* ==========================================
+   PARTÍCULAS
+========================================== */
+
+.particles{
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    overflow:hidden;
+
+    z-index:0;
+}
+
+.particle{
+
+    position:absolute;
+
+    width:2px;
+    height:2px;
+
+    background:#d8d0bd;
+
+    border-radius:50%;
+
+    opacity:.4;
+
+    animation:float linear infinite;
+}
+
+@keyframes float{
+
+    from{
+        transform:translateY(110vh);
+        opacity:0;
+    }
+
+    20%{
+        opacity:.5;
+    }
+
+    80%{
+        opacity:.25;
+    }
+
+    to{
+        transform:translateY(-10vh);
+        opacity:0;
+    }
+}
+
+
+/* ==========================================
+   INTRO
+========================================== */
+
+.intro{
+
+    min-height:100vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    position:relative;
+
+    z-index:2;
+
+    padding:30px;
+}
+
+.expedition{
+
+    font-family:"Cinzel",serif;
+
+    font-size:13px;
+
+    letter-spacing:8px;
+
+    color:#928b7e;
+
+    margin-bottom:25px;
+
+    animation:fadeIn 2s ease;
+}
+
+.intro h1{
+
+    font-family:"Cinzel",serif;
+
+    font-size:clamp(55px,10vw,110px);
+
+    font-weight:500;
+
+    letter-spacing:5px;
+
+    animation:titleAppear 2s ease;
+}
+
+.intro .subtitle{
+
+    margin-top:20px;
+
+    font-family:"Cinzel",serif;
+
+    color:#777168;
+
+    letter-spacing:6px;
+
+    font-size:13px;
+}
+
+.symbol{
+
+    margin-top:50px;
+
+    width:60px;
+
+    height:60px;
+
+    border:1px solid #716b62;
+
+    transform:rotate(45deg);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+}
+
+.symbol span{
+
+    transform:rotate(-45deg);
+
+    font-family:"Cinzel",serif;
+
+    font-size:20px;
+
+    color:#aaa294;
+}
+
+.scroll{
+
+    position:absolute;
+
+    bottom:35px;
+
+    font-size:10px;
+
+    letter-spacing:4px;
+
+    color:#666159;
+
+    animation:pulse 2s infinite;
+}
+
+
+/* ==========================================
+   CONTENIDO
+========================================== */
+
+main{
+
+    position:relative;
+
+    z-index:2;
+
+    width:min(850px,92%);
+
+    margin:auto;
+
+    padding-bottom:120px;
+}
+
+
+/* ==========================================
+   IDENTIDAD
+========================================== */
+
+.identity{
+
+    text-align:center;
+
+    margin-bottom:60px;
+}
+
+.identity .label{
+
+    font-size:10px;
+
+    letter-spacing:5px;
+
+    color:#777168;
+}
+
+.identity h2{
+
+    font-family:"Cinzel",serif;
+
+    font-size:clamp(35px,7vw,60px);
+
+    font-weight:500;
+
+    margin-top:15px;
+}
+
+.identity p{
+
+    margin-top:12px;
+
+    color:#777168;
+
+    font-size:13px;
+
+    letter-spacing:2px;
+}
+
+
+/* ==========================================
+   CARTA
+========================================== */
+
+.letter{
+
+    position:relative;
+
+    padding:clamp(30px,6vw,65px);
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(38,38,38,.94),
+            rgba(14,14,14,.98)
+        );
+
+    border:1px solid rgba(180,170,150,.2);
+
+    box-shadow:
+
+        0 30px 80px rgba(0,0,0,.65),
+
+        inset 0 0 60px rgba(255,255,255,.015);
+
+    animation:letterAppear 1.5s ease;
+}
+
+.letter::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:9px;
+
+    border:1px solid rgba(180,170,150,.07);
+
+    pointer-events:none;
+}
+
+
+/* ==========================================
+   TEXTO
+========================================== */
+
+.letter-header{
+
+    text-align:center;
+
+    margin-bottom:45px;
+}
+
+.letter-header span{
+
+    font-family:"Cinzel",serif;
+
+    font-size:10px;
+
+    letter-spacing:5px;
+
+    color:#777168;
+}
+
+.letter-header h3{
+
+    font-family:"Cinzel",serif;
+
+    font-weight:400;
+
+    font-size:30px;
+
+    margin-top:15px;
+}
+
+.letter p{
+
+    font-size:16px;
+
+    line-height:2;
+
+    color:#c5bfb4;
+
+    font-weight:300;
+
+    margin-bottom:25px;
+}
+
+.highlight{
+
+    color:#e5ded0;
+
+    font-family:"Cinzel",serif;
+}
+
+
+/* ==========================================
+   POESÍA
+========================================== */
+
+.poem{
+
+    margin:55px 0;
+
+    padding:35px 25px;
+
+    text-align:center;
+
+    border-top:1px solid rgba(180,170,150,.15);
+
+    border-bottom:1px solid rgba(180,170,150,.15);
+}
+
+.poem p{
+
+    font-family:"Cinzel",serif;
+
+    font-size:19px;
+
+    line-height:2;
+
+    color:#dcd5c8;
+
+    margin:0;
+}
+
+.poem .author{
+
+    display:block;
+
+    margin-top:20px;
+
+    font-family:"Inter",sans-serif;
+
+    font-size:9px;
+
+    letter-spacing:4px;
+
+    color:#706a61;
+}
+
+
+/* ==========================================
+   FÍSICA
+========================================== */
+
+.physics{
+
+    margin:70px 0;
+
+    padding:45px 25px;
+
+    background:rgba(255,255,255,.015);
+
+    border-left:1px solid rgba(180,170,150,.25);
+
+    border-right:1px solid rgba(180,170,150,.08);
+
+    text-align:center;
+}
+
+.physics-title{
+
+    font-family:"Cinzel",serif;
+
+    letter-spacing:5px;
+
+    font-size:11px;
+
+    color:#777168;
+
+    margin-bottom:30px;
+}
+
+.physics p{
+
+    font-family:"Cinzel",serif;
+
+    font-size:18px;
+
+    line-height:2.1;
+
+    color:#ccc5b9;
+
+    margin-bottom:22px;
+}
+
+.formula{
+
+    font-family:"Times New Roman",serif;
+
+    font-size:24px;
+
+    color:#aaa294;
+
+    margin:25px 0;
+}
+
+
+/* ==========================================
+   FRASE
+========================================== */
+
+.quote{
+
+    text-align:center;
+
+    margin:60px 0;
+}
+
+.quote p{
+
+    font-family:"Cinzel",serif;
+
+    font-size:clamp(20px,4vw,28px);
+
+    line-height:1.8;
+
+    color:#ded8cc;
+}
+
+.quote small{
+
+    display:block;
+
+    margin-top:20px;
+
+    color:#69635a;
+
+    letter-spacing:3px;
+
+    font-size:9px;
+}
+
+
+/* ==========================================
+   FIRMA
+========================================== */
+
+.signature{
+
+    margin-top:60px;
+
+    text-align:right;
+}
+
+.signature p{
+
+    margin:0;
+
+    font-size:14px;
+}
+
+.signature strong{
+
+    display:block;
+
+    font-family:"Cinzel",serif;
+
+    font-size:23px;
+
+    margin-top:10px;
+
+    color:#ddd6ca;
+}
+
+
+/* ==========================================
+   BOTÓN
+========================================== */
+
+.button-container{
+
+    text-align:center;
+
+    margin-top:55px;
+}
+
+button{
+
+    background:transparent;
+
+    border:1px solid rgba(200,190,170,.35);
+
+    color:#d7d0c4;
+
+    padding:15px 30px;
+
+    font-family:"Cinzel",serif;
+
+    font-size:10px;
+
+    letter-spacing:4px;
+
+    cursor:pointer;
+
+    transition:.5s;
+}
+
+button:hover{
+
+    background:rgba(220,210,190,.07);
+
+    border-color:#aaa294;
+
+    box-shadow:0 0 30px rgba(255,255,255,.05);
+}
+
+#finalMessage{
+
+    display:none;
+
+    margin-top:35px;
+
+    font-family:"Cinzel",serif;
+
+    color:#aaa294;
+
+    font-size:15px;
+
+    line-height:2;
+
+    animation:fadeIn 2s ease;
+}
+
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+footer{
+
+    text-align:center;
+
+    margin-top:70px;
+
+    color:#4f4b45;
+
+    font-size:9px;
+
+    letter-spacing:4px;
+}
+
+
+/* ==========================================
+   ANIMACIONES
+========================================== */
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+}
+
+@keyframes titleAppear{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(30px);
+
+        letter-spacing:20px;
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+        letter-spacing:5px;
+    }
+}
+
+@keyframes letterAppear{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(50px);
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+    }
+}
+
+@keyframes pulse{
+
+    0%,100%{
+        opacity:.3;
+    }
+
+    50%{
+        opacity:1;
+    }
+}
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media(max-width:600px){
+
+    .intro h1{
+
+        font-size:50px;
+    }
+
+    .expedition{
+
+        letter-spacing:5px;
+    }
+
+    .letter{
+
+        padding:30px 22px;
+    }
+
+    .letter p{
+
+        font-size:14px;
+
+        line-height:1.9;
+    }
+
+    .physics p{
+
+        font-size:16px;
+    }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ==========================================
+     PARTÍCULAS
+========================================== -->
+
+<div class="particles"></div>
+
+
+<!-- ==========================================
+     INTRO
+========================================== -->
+
+<section class="intro">
+
+    <div class="expedition">
+        EXPEDITION 33
+    </div>
+
+    <h1>LO NELY</h1>
+
+    <div class="subtitle">
+        REGISTRO DE UN COMPAÑERO
+    </div>
+
+    <div class="symbol">
+        <span>33</span>
+    </div>
+
+    <div class="scroll">
+        DESCIENDE PARA CONTINUAR LA EXPEDICIÓN
+    </div>
+
+</section>
+
+
+
+<!-- ==========================================
+     CARTA
+========================================== -->
+
+<main>
+
+
+<div class="identity">
+
+    <div class="label">
+        EXPEDICIONISTA
+    </div>
+
+    <h2>Lonely</h2>
+
+    <p>
+        ESTADO: PRESENTE
+    </p>
+
+</div>
+
+
+
+<section class="letter">
+
+
+<div class="letter-header">
+
+    <span>
+        REGISTRO PERSONAL
+    </span>
+
+    <h3>
+        Para Lonely
+    </h3>
+
+</div>
+
+
+<p>
+
+    No sabía exactamente cómo escribir esto,
+    así que decidí hacerlo de una manera que
+    probablemente entenderías mejor.
+
+</p>
+
+
+<p>
+
+    Si esta vida fuera una expedición,
+    probablemente nosotros seríamos de esos
+    compañeros que a veces caminan juntos,
+    otras veces terminan tomando caminos distintos
+    y, en algún punto, vuelven a encontrarse.
+
+</p>
+
+
+<p>
+
+    Porque sí, a veces peleamos.
+
+</p>
+
+
+<p>
+
+    A veces nos alejamos.
+    Dejamos de hablar durante un rato,
+    cada uno se queda en su propio mundo
+    y parece que la distancia se vuelve más grande
+    de lo que realmente es.
+
+</p>
+
+
+<p>
+
+    Pero quiero que sepas algo que quizá
+    no digo demasiado:
+
+    <span class="highlight">
+    nunca dejo de tenerte presente.
+    </span>
+
+</p>
+
+
+<p>
+
+    Incluso cuando no hablamos,
+    sigues siendo alguien que considero cercano.
+    Alguien a quien recuerdo,
+    alguien por quien me preocupo
+    y alguien que forma parte de mi historia.
+
+</p>
+
+
+<div class="poem">
+
+<p>
+
+    Quizá nuestra amistad sea como una expedición:
+    no porque siempre sepamos hacia dónde vamos,
+    sino porque incluso después de perdernos,
+    encontramos alguna forma de volver.
+
+</p>
+
+<span class="author">
+    — REGISTRO 33
+</span>
+
+</div>
+
+
+
+<p>
+
+    Y supongo que eso también es lo bonito
+    de algunas amistades.
+
+</p>
+
+
+<p>
+
+    No necesitan ser perfectas.
+
+</p>
+
+
+<p>
+
+    No necesitan hablar todos los días.
+
+</p>
+
+
+<p>
+
+    No necesitan estar constantemente demostrando
+    que existen.
+
+</p>
+
+
+<p>
+
+    Algunas simplemente permanecen.
+
+</p>
+
+
+<p>
+
+    Y tú eres una de esas personas para mí.
+
+</p>
+
+
+
+<!-- ==========================================
+     POESÍA EXPEDITION
+========================================== -->
+
+<div class="poem">
+
+<p>
+
+    Si el mundo fuera un lienzo condenado
+    y nosotros solamente una pincelada,
+
+    preferiría haber compartido contigo
+    una pequeña parte del cuadro
+
+    antes que contemplar una obra perfecta
+    en la que nunca apareciste.
+
+</p>
+
+<span class="author">
+    — PARA EL EXPEDICIONISTA LONELY
+</span>
+
+</div>
+
+
+
+<!-- ==========================================
+     FÍSICA + POESÍA
+========================================== -->
+
+<section class="physics">
+
+<div class="physics-title">
+    FÍSICA DE UNA AMISTAD
+</div>
+
+
+<p>
+
+    Dicen que todo cuerpo permanece en movimiento
+    mientras una fuerza actúe sobre él.
+
+</p>
+
+
+<div class="formula">
+    F = ma
+</div>
+
+
+<p>
+
+    Quizá por eso algunas personas aparecen
+    en nuestras vidas y terminan cambiando
+    nuestra trayectoria.
+
+</p>
+
+
+<p>
+
+    No porque nos empujen hacia algún lugar,
+    sino porque su existencia modifica
+    la dirección de nuestro movimiento.
+
+</p>
+
+
+<p>
+
+    Tú has sido una de esas fuerzas.
+
+</p>
+
+
+<p>
+
+    Y aunque alguna vez nos alejemos,
+    la distancia no significa necesariamente
+    ausencia.
+
+</p>
+
+
+<div class="formula">
+    F ∝ 1 / r²
+</div>
+
+
+<p>
+
+    La gravedad nos enseña algo curioso:
+
+    cuanto más cerca estamos,
+    más fuerte es la interacción.
+
+    Pero incluso cuando aumenta la distancia,
+    la fuerza no desaparece de inmediato.
+
+</p>
+
+
+<p>
+
+    Tal vez algunas amistades funcionen igual.
+
+</p>
+
+
+<p>
+
+    Podemos estar lejos.
+
+    Podemos estar molestos.
+
+    Podemos dejar de hablar.
+
+</p>
+
+
+<p>
+
+    Pero eso no significa que dejemos
+    de formar parte del universo del otro.
+
+</p>
+
+
+<div class="formula">
+    E = mc²
+</div>
+
+
+<p>
+
+    La física también dice que la energía
+    no desaparece.
+
+    Se transforma.
+
+</p>
+
+
+<p>
+
+    Y quizá los recuerdos funcionen de una manera
+    parecida.
+
+</p>
+
+
+<p>
+
+    Una conversación se convierte en recuerdo.
+
+    Una pelea se convierte en aprendizaje.
+
+    Una risa se convierte en nostalgia.
+
+    Y una amistad se convierte en parte
+    de quienes terminamos siendo.
+
+</p>
+
+
+<div class="poem">
+
+<p>
+
+    Tal vez el tiempo sea solamente
+    otra dimensión del universo,
+
+    pero hay personas que consiguen
+    permanecer presentes
+
+    incluso cuando el tiempo
+    intenta alejarlas.
+
+</p>
+
+<span class="author">
+    — TIEMPO · ESPACIO · MEMORIA
+</span>
+
+</div>
+
+
+<p>
+
+    Y si algún día la entropía termina
+    desordenándolo todo,
+
+    espero que al menos quede una pequeña
+    parte de este momento.
+
+</p>
+
+
+<p>
+
+    Porque incluso en un universo que tiende
+    al caos,
+
+    algunas cosas encuentran la manera
+    de permanecer.
+
+</p>
+
+</section>
+
+
+
+<!-- ==========================================
+     POEMA FINAL
+========================================== -->
+
+<div class="quote">
+
+<p>
+
+    "Quizá no podamos detener el tiempo,
+    ni cambiar el camino que ya recorrimos.
+
+    Pero todavía podemos elegir
+    con quién caminar el siguiente."
+
+</p>
+
+<small>
+    EXPEDITION 33
+</small>
+
+</div>
+
+
+
+<p>
+
+    Así que hoy, en tu cumpleaños,
+    quiero dejarte esto.
+
+</p>
+
+
+<p>
+
+    No solamente como una felicitación,
+    sino como un pequeño registro de algo
+    que quizá algún día olvidemos decirnos.
+
+</p>
+
+
+<p>
+
+    Gracias por ser mi amigo.
+
+</p>
+
+
+<p>
+
+    Gracias por los momentos buenos,
+    por las conversaciones,
+    por las estupideces,
+    por las discusiones
+    y hasta por esos momentos en los que
+    terminamos sin hablarnos.
+
+</p>
+
+
+<p>
+
+    Porque incluso esos momentos forman parte
+    de nuestra historia.
+
+</p>
+
+
+<p>
+
+    Y aunque la expedición tenga sus pausas,
+    sus desvíos y sus momentos difíciles,
+
+    quiero que sepas que para mí
+    sigues siendo un compañero importante.
+
+</p>
+
+
+<p>
+
+    Espero que este nuevo año de tu vida
+    te encuentre con nuevas historias,
+    nuevos lugares,
+    nuevas personas
+    y muchas razones para seguir avanzando.
+
+</p>
+
+
+<p>
+
+    Que cumplas tus metas.
+
+    Que sobrevivas a tus propias batallas.
+
+    Que encuentres aquello que estás buscando.
+
+    Y que, cuando mires atrás,
+    puedas sentir que todo el camino
+    realmente valió la pena.
+
+</p>
+
+
+
+<div class="poem">
+
+<p>
+
+    Y si alguna vez volvemos a perdernos,
+
+    que sea solamente para descubrir
+    que todavía sabemos encontrarnos.
+
+</p>
+
+<span class="author">
+    — FIN DEL REGISTRO
+</span>
+
+</div>
+
+
+
+<div class="signature">
+
+<p>
+    Feliz cumpleaños, Lonely.
+</p>
+
+<strong>
+    La expedición continúa.
+</strong>
+
+</div>
+
+
+
+<div class="button-container">
+
+<button onclick="revealMessage()">
+    ABRIR ÚLTIMO REGISTRO
+</button>
+
+<div id="finalMessage">
+
+    <p>
+        No importa cuánto cambie el camino.
+    </p>
+
+    <p>
+        Siempre habrá un lugar para ti
+        entre mis recuerdos.
+    </p>
+
+    <p>
+        Feliz vida, compañero.
+    </p>
+
+    <p>
+        <strong>— Expedición 33</strong>
+    </p>
+
+</div>
+
+</div>
+
+
+</section>
+
+
+
+<footer>
+
+    EXPEDITION 33 · ARCHIVO PERSONAL · LONELY
+
+</footer>
+
+
+</main>
+
+
+
+<script>
+
+
+/* ==========================================
+   CREAR PARTÍCULAS
+========================================== */
+
+const particles =
+document.querySelector(".particles");
+
+
+for(let i=0;i<100;i++){
+
+    const particle =
+    document.createElement("div");
+
+    particle.classList.add("particle");
+
+    particle.style.left =
+    Math.random()*100 + "%";
+
+    particle.style.animationDuration =
+    (Math.random()*15+8) + "s";
+
+    particle.style.animationDelay =
+    (Math.random()*15) + "s";
+
+    particle.style.opacity =
+    Math.random()*.5;
+
+    particles.appendChild(particle);
+}
+
+
+/* ==========================================
+   ÚLTIMO REGISTRO
+========================================== */
+
+function revealMessage(){
+
+    const message =
+    document.getElementById("finalMessage");
+
+    message.style.display = "block";
+
+    window.setTimeout(()=>{
+
+        message.scrollIntoView({
+            behavior:"smooth",
+            block:"center"
+        });
+
+    },100);
+
+}
+
+</script>
+
+
+</body>
+
+</html>
+
